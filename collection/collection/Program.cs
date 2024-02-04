@@ -1,47 +1,55 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace collection
 {
-    //Dictionary Implementation
-    //Dictionary are used to link between two data types.
-    //Dictinary are of two types:
-    //1) Dictionary: This contains a set paired values in order of values added to the dictionary
-    //2) Sorted Dictionary: This contains the set of paired values same as Dictionary, But the difference from the 
-    //                      Dictionary is that the key values are sorted in ascending order.
-    //Some basic commands performed in Dictionary:
-    //1. Add(): This function adds a pair value in to the dictionary in which the first parameter passed represents the key
-    //          value which links with the key's value represented in the second parameter.
-    //2. Remove(): This function removes the value along with the key fomr the dictionary.
-    //3. ContainsKey(): This function returs a bool value when the dictionary contains a particular key
-    //4. ContainsValue(): This function returns a bool value when a value is present in Dictionary.
-    //5. Clear(): This function clears all the data present in the dictionary.
+    //Queue Implementation.
+    //Queue is a data structure which follows First in First Out.
+    //Queue can be initialized through generics and non-generics.
+    //Generic Queue stores a uniform datatype and Non-Generic Queue stores multiple datatypes.
+    //Basic functions implamented in queues:
+    //1. Enqueue(): This function adds element into the queue.
+    //2. Dequeue(): This function removes the first element from the queue.
+    //3. Contains(): This function checks whether the element is present in the queue.
+    //4. Count()/Count: This function returns the total number of elements present in the queue.
+    //5. Clear(): This function Clears the queue.
     internal class Program
     {
         static void Main(string[] args)
         {
-            Dictionary<int,string> linked = new Dictionary<int,string>();
-            linked.Add(2,"Kill");
-            linked.Add(4,"Survive");
-            Console.WriteLine(linked.ContainsKey(2));
-            Console.WriteLine(linked.ContainsValue("Kill"));
-            linked.Add(1,"Play");
-            linked.Add(3, "Push");
-            foreach (var key in linked.Keys)
+            Queue<string> queue = new Queue<string>();
+            Queue queue1 = new Queue();
+            queue.Enqueue("a");
+            queue.Enqueue("b");
+            queue.Enqueue("c");
+            queue.Enqueue("d");
+            foreach (var item in queue)
             {
-                Console.WriteLine($"{key} : {linked[key]}");
+                Console.WriteLine(item);
             }
-            linked.Remove(2);
-            Console.WriteLine(linked.Count());
-            foreach (var key in linked.Keys)
+            Console.WriteLine();
+            queue.Dequeue();
+            Console.WriteLine(queue.Contains("a"));
+            Console.WriteLine(queue.Peek());
+            Console.WriteLine(queue.Count());
+            queue1.Enqueue(1);
+            queue1.Enqueue('a');
+            queue1.Enqueue(5.6);
+            queue1.Enqueue("you");
+            foreach (var item in queue1)
             {
-                Console.WriteLine($"{key} : {linked[key]}");
+                Console.WriteLine(item);
             }
-            linked.Clear();
+            Console.WriteLine();
+            queue.Dequeue();
+            Console.WriteLine(queue1.Contains("a"));
+            Console.WriteLine(queue1.Peek());
+            Console.WriteLine(queue1.Count);
         }
     }
 }
