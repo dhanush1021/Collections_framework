@@ -8,48 +8,45 @@ using System.Threading.Tasks;
 
 namespace collection
 {
-    //Queue Implementation.
-    //Queue is a data structure which follows First in First Out.
-    //Queue can be initialized through generics and non-generics.
-    //Generic Queue stores a uniform datatype and Non-Generic Queue stores multiple datatypes.
-    //Basic functions implamented in queues:
-    //1. Enqueue(): This function adds element into the queue.
-    //2. Dequeue(): This function removes the first element from the queue.
-    //3. Contains(): This function checks whether the element is present in the queue.
-    //4. Count()/Count: This function returns the total number of elements present in the queue.
-    //5. Clear(): This function Clears the queue.
     internal class Program
     {
+        //Stack Implementation
+        //Stack is a data structure which follows the First in Last out Concept.
+        //Stack is defined both in Generic and Non-Generic.
+        //Stack perfomrs certain Functions:
+        //1. Push(): This function pushes an element into the stack.
+        //2. Pop(): This function pops out the element which is present on the top of the stack.
+        //3. Contains(): This function return a bool value based on the availability of an elemnt in the stack.
+        //4. Peek(): This function returns the top element of the stack.
+        //5. Clear(): This function is used to clear the stack.
         static void Main(string[] args)
         {
-            Queue<string> queue = new Queue<string>();
-            Queue queue1 = new Queue();
-            queue.Enqueue("a");
-            queue.Enqueue("b");
-            queue.Enqueue("c");
-            queue.Enqueue("d");
-            foreach (var item in queue)
+            Stack<int> stack = new Stack<int>();
+            Stack stack1 = new Stack();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(4);
+            stack1.Push(1);
+            stack1.Push('a');
+            stack1.Push(7.56);
+            stack1.Push("you");
+            foreach (int i in stack)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(i);
             }
-            Console.WriteLine();
-            queue.Dequeue();
-            Console.WriteLine(queue.Contains("a"));
-            Console.WriteLine(queue.Peek());
-            Console.WriteLine(queue.Count());
-            queue1.Enqueue(1);
-            queue1.Enqueue('a');
-            queue1.Enqueue(5.6);
-            queue1.Enqueue("you");
-            foreach (var item in queue1)
+            foreach (object i in stack1)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(i);
             }
-            Console.WriteLine();
-            queue.Dequeue();
-            Console.WriteLine(queue1.Contains("a"));
-            Console.WriteLine(queue1.Peek());
-            Console.WriteLine(queue1.Count);
+            stack.Pop();
+            stack1.Pop();
+            Console.WriteLine(stack.Contains(1));
+            Console.WriteLine(stack1.Contains("yo"));
+            Console.WriteLine(stack.Peek());
+            Console.WriteLine(stack1.Peek());
+            stack.Clear();
+            stack1.Clear();
         }
     }
 }
