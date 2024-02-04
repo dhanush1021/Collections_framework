@@ -7,37 +7,41 @@ using System.Threading.Tasks;
 
 namespace collection
 {
-    //list implementation.
-    //List is a dynamic array which increases its capacity.
-    //List has a capacity of 4 bytes at the intialization and increases 2 times.
-    //List is a generic data structure which stores the values of the same datatype.
-    //Some basic commands performed on list are :
-    //1. Add(): This function helps to add an element in to the list.
-    //2. Remove(): This function removes a element present between the brackets from the list.
-    //3. RemoveAt(): This function removes an element at the particular index from the list.
-    //4. Clear(): This function clears all the elements present in the list.
-    //5. IndexOf(): this function specifies the index of an element.
-    //foreach loop is used to access the elements from the list.
+    //Dictionary Implementation
+    //Dictionary are used to link between two data types.
+    //Dictinary are of two types:
+    //1) Dictionary: This contains a set paired values in order of values added to the dictionary
+    //2) Sorted Dictionary: This contains the set of paired values same as Dictionary, But the difference from the 
+    //                      Dictionary is that the key values are sorted in ascending order.
+    //Some basic commands performed in Dictionary:
+    //1. Add(): This function adds a pair value in to the dictionary in which the first parameter passed represents the key
+    //          value which links with the key's value represented in the second parameter.
+    //2. Remove(): This function removes the value along with the key fomr the dictionary.
+    //3. ContainsKey(): This function returs a bool value when the dictionary contains a particular key
+    //4. ContainsValue(): This function returns a bool value when a value is present in Dictionary.
+    //5. Clear(): This function clears all the data present in the dictionary.
     internal class Program
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
-            list.Remove(2);
-            list.RemoveAt(1);
-            list.Add(2);
-            list.Add(3);
-            Console.WriteLine(list.IndexOf(2));
-            foreach (int i in list)
+            Dictionary<int,string> linked = new Dictionary<int,string>();
+            linked.Add(2,"Kill");
+            linked.Add(4,"Survive");
+            Console.WriteLine(linked.ContainsKey(2));
+            Console.WriteLine(linked.ContainsValue("Kill"));
+            linked.Add(1,"Play");
+            linked.Add(3, "Push");
+            foreach (var key in linked.Keys)
             {
-                Console.WriteLine(i);
+                Console.WriteLine($"{key} : {linked[key]}");
             }
-            list.Clear();
-            Console.WriteLine(list);
+            linked.Remove(2);
+            Console.WriteLine(linked.Count());
+            foreach (var key in linked.Keys)
+            {
+                Console.WriteLine($"{key} : {linked[key]}");
+            }
+            linked.Clear();
         }
     }
 }
