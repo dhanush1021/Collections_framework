@@ -8,78 +8,55 @@ using System.Threading.Tasks;
 
 namespace collection
 {
-    //Hashset Implementation
-    //Hashset is a data structure defined using Generics contains values that are unique.
-    //It Contains the values in uniform datatype and all the elements are unique.
-    //Hashset does not store duplicate values.
-    //Hashset performs certain functions :
-    //1. Add(): This function appends value into the hashset.
-    //2. Remove(): This function removes a value from the hashset.
-    //3. UnionWith(): This function merges 2 hashsets and updates the merge values into one existing hashset.
-    //4. IntersectWith(): This function returns the values which are common in two hashsets and stores those values into one
-    //                    existing hashset.
-    //5. ExceptWith(): This function returns values which are not in common between two hasets and stores the value into the
-    //                 existing hashset.
     internal class Program
     {
+        //LinkedList Implementation
+        //LinkedList is a datastructure which stores the data contiguously.
+        //LinkedList is defined in Generics and not defined in Non-Generics.
+        //Linkedlist stores values uniformly rather than hetrogenously.
+        //LinkedList performs certain functions:
+        //1.  AddFirst(): This function adds new node at the head of linkedlist.
+        //2.  AddLast(): This function adds new node at the tail of the Linkedlist.
+        //3.  Count: This function returns the total number of elements present in LinkedList.
+        //4.  First: This function returns the reference to the First Node i.e, the head of the linkedList.
+        //5.  Last: This function returns the reference to the Last Node i.e, the tail of the LinkedList.
+        //6.  AddBefore(): This function adds a new node before any specified node in the LinkedList.
+        //7.  AddAfter(): This function adds a new node after any specified node in the LinkedList.
+        //9.  RemoveFirst(): This function removes the first node i.e, the head of the LinkedList.
+        //8.  Remove(): This function removes a specific node from the LinkedList.
+        //10. RemoveFirst(): This function removes the head node from the LinkedList.
+        //11. RemoveLast(): This function removes the tail node from the LinkedList.
+        //12. Contains(): This function returns a bool value, if the specified value is present in the LinkedList then it
+        //                returns True otherwise False is returned.
+        //13. Clear(): This fucntion clears the LinkedList.
         static void Main(string[] args)
         {
-            HashSet<int> ints = new HashSet<int>();
-            HashSet<int> ints1 = new HashSet<int>();
-            HashSet<int> ints2 = new HashSet<int>();
-            ints.Add(1);
-            ints.Add(2);
-            ints.Add(3);
-            ints.Add(1);
-            ints.Add(2);
-            ints.Add(4);
-            ints1.Add(5);
-            ints1.Add(6);
-            ints1.Add(10);
-            ints1.Add(100);
-            ints2.Add(5);
-            ints2.Add(6);
-            ints2.Add(10);
-            ints2.Add(100);
-            foreach (int i in ints)
-            {
-                Console.WriteLine(i);
-            }
+            LinkedList<string> list = new LinkedList<string>();
+            list.AddFirst("a");
+            list.AddLast("b");
+            list.AddLast("c");
+            list.AddLast("d");
+            list.AddLast("e");
+            Console.WriteLine(list.Count);
+            Console.WriteLine(list.First);
+            Console.WriteLine(list.Last);
+            list.Remove("c");
+            foreach (string s in list) 
+                Console.WriteLine(s);
             Console.WriteLine();
-            foreach (int i in ints1)
-            {
-                Console.WriteLine(i);
-            }
+            var newnode = list.AddLast("f");
+            list.AddBefore(newnode,"g");
+            list.AddAfter(newnode,"h");
+            foreach (string s in list) 
+                Console.WriteLine(s);
             Console.WriteLine();
-            foreach (int i in ints2)
-            {
-                Console.WriteLine(i);
-            }
+            list.RemoveFirst();
+            list.RemoveLast();
+            foreach (string s in list)
+                Console.WriteLine(s);
             Console.WriteLine();
-            ints.Remove(3);
-            HashSet<int> myhash2 = new HashSet<int>() {10,100,1000,10000,100000};
-            foreach (int i in myhash2)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine();
-            ints.UnionWith(myhash2);
-            foreach (int i in ints)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine();
-            ints1.IntersectWith(myhash2);
-            foreach (int i in ints1)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine();
-            ints2.ExceptWith(myhash2);
-            foreach (int i in ints2)
-            {
-                Console.WriteLine(i);
-            }
+            Console.WriteLine(list.Contains("f"));
+            list.Clear();
         }
     }
 }
