@@ -8,45 +8,78 @@ using System.Threading.Tasks;
 
 namespace collection
 {
+    //Hashset Implementation
+    //Hashset is a data structure defined using Generics contains values that are unique.
+    //It Contains the values in uniform datatype and all the elements are unique.
+    //Hashset does not store duplicate values.
+    //Hashset performs certain functions :
+    //1. Add(): This function appends value into the hashset.
+    //2. Remove(): This function removes a value from the hashset.
+    //3. UnionWith(): This function merges 2 hashsets and updates the merge values into one existing hashset.
+    //4. IntersectWith(): This function returns the values which are common in two hashsets and stores those values into one
+    //                    existing hashset.
+    //5. ExceptWith(): This function returns values which are not in common between two hasets and stores the value into the
+    //                 existing hashset.
     internal class Program
     {
-        //Stack Implementation
-        //Stack is a data structure which follows the First in Last out Concept.
-        //Stack is defined both in Generic and Non-Generic.
-        //Stack perfomrs certain Functions:
-        //1. Push(): This function pushes an element into the stack.
-        //2. Pop(): This function pops out the element which is present on the top of the stack.
-        //3. Contains(): This function return a bool value based on the availability of an elemnt in the stack.
-        //4. Peek(): This function returns the top element of the stack.
-        //5. Clear(): This function is used to clear the stack.
         static void Main(string[] args)
         {
-            Stack<int> stack = new Stack<int>();
-            Stack stack1 = new Stack();
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(3);
-            stack.Push(4);
-            stack1.Push(1);
-            stack1.Push('a');
-            stack1.Push(7.56);
-            stack1.Push("you");
-            foreach (int i in stack)
+            HashSet<int> ints = new HashSet<int>();
+            HashSet<int> ints1 = new HashSet<int>();
+            HashSet<int> ints2 = new HashSet<int>();
+            ints.Add(1);
+            ints.Add(2);
+            ints.Add(3);
+            ints.Add(1);
+            ints.Add(2);
+            ints.Add(4);
+            ints1.Add(5);
+            ints1.Add(6);
+            ints1.Add(10);
+            ints1.Add(100);
+            ints2.Add(5);
+            ints2.Add(6);
+            ints2.Add(10);
+            ints2.Add(100);
+            foreach (int i in ints)
             {
                 Console.WriteLine(i);
             }
-            foreach (object i in stack1)
+            Console.WriteLine();
+            foreach (int i in ints1)
             {
                 Console.WriteLine(i);
             }
-            stack.Pop();
-            stack1.Pop();
-            Console.WriteLine(stack.Contains(1));
-            Console.WriteLine(stack1.Contains("yo"));
-            Console.WriteLine(stack.Peek());
-            Console.WriteLine(stack1.Peek());
-            stack.Clear();
-            stack1.Clear();
+            Console.WriteLine();
+            foreach (int i in ints2)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+            ints.Remove(3);
+            HashSet<int> myhash2 = new HashSet<int>() {10,100,1000,10000,100000};
+            foreach (int i in myhash2)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+            ints.UnionWith(myhash2);
+            foreach (int i in ints)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+            ints1.IntersectWith(myhash2);
+            foreach (int i in ints1)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+            ints2.ExceptWith(myhash2);
+            foreach (int i in ints2)
+            {
+                Console.WriteLine(i);
+            }
         }
     }
 }
